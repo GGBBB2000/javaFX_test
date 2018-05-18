@@ -5,7 +5,11 @@
 
 <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#onMoved" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MvPController">
    <children>
-      <Pane layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;" />
-      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="10.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+      <Pane layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;">
+         <children>
+            <Circle fx:id="circle1" fill="#30ff1f" layoutX="20.0" layoutY="20.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </Pane>
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="14.0" layoutY="-23.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </Pane>
