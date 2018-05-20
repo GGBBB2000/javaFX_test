@@ -3,7 +3,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.Scene;
-import javafx.fxml.FXML;
+import javafx.fxml.FXML; //FXMLをコード内で利用するためのもの
 import javafx.event.ActionEvent;
 import javafx.animation.Timeline;
 import javafx.animation.Animation;
@@ -18,11 +18,11 @@ public class MvPController{
 	private double circle1Y = 20;
 
 	@FXML
-	private Circle circle, circle1;
+	private Circle circle, circle1; //円の配置
 	
 	@FXML
 	void initialize(){
-		final Timeline tl = new Timeline();
+		final Timeline tl = new Timeline(); //Timelineで敵を動かせるようにする
 		tl.setCycleCount(Animation.INDEFINITE);
 		tl.getKeyFrames().add(new KeyFrame(
 					Duration.millis(100),
@@ -33,10 +33,12 @@ public class MvPController{
 						setCircle1Position(x, y);
 					}
 					));
-		tl.play();
-		javafx.application.Platform.runLater(() -> {
+		// tl.play();
+		javafx.application.Platform.runLater(() -> { 
+			//setOnKeyPressedはSceneに実装しないといけないので
+			//遅延させてから実行している
 			Scene scene = circle.getScene();
-			scene.setOnKeyPressed(e -> {
+			scene.setOnKeyPressed(e -> { //キーボード入力
 				System.out.println(e.getCode().toString());
 				double x = circle.getLayoutX();
 				double y = circle.getLayoutY();
@@ -76,19 +78,18 @@ public class MvPController{
 			if(y >= upper + 10 && y <= bottom - 10){
 				object.setLayoutY(y);
 			}
-			circle.setLayoutX(x);
+			object.setLayoutX(x);
 		}else{
 			if(y >= upper + 10 && y <= bottom - 10){
 				object.setLayoutY(y);
 			}
 		}
-		System.out.println("hoge");
 	}
 
 	void setCircle1Position(double x, double y){
 		double circleX = mouseX;
 		double circleY = mouseY;
-		System.out.printf("circleX:%f", circleX);
+		//System.out.printf("circleX:%f", circleX);
 		if(x > circleX){
 			if(y > circleY){
 				setCircle(circle1, x, y + 5);
